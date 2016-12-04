@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -n | --projectname )    shift
+				projectname=$1
+                                ;;
+        -c | --config )         shift
+				config=$1
+                                ;;
+    esac
+    shift
+done
+
+if [ "$projectname" != "" ]; then
+	TEMPLOG=$(tempfile)
+	cd "/root/workspace/$projectname/$config"
+	# удаляем ошмётки `strace`, которые могут появиться в некоторых случаях:
+	pvs-studio-analyzer trace -- make -f makefile all 2>&1 | sed '/strace: umovestr:/d' -
+	pvs-studio-analyzer analyze --compiler arm-none-eabi-gcc -e "/usr/arm-none-eabi/include/" -o "$TEMPLOG"
+
+	# удаляем непонятную строку, которая у меня появляется в выводе конвертера:
+	RC=$(plog-converter -t errorfile "$TEMPLOG" | sed '/The documentation for all/d' -)
+	rm -f "$TEMPLOG"
+	echo "$RC"
+fi
