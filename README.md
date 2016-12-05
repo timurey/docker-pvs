@@ -1,7 +1,7 @@
 ### PVS-Studio for macOS via docker
 ___
 
-![](screenshot.png)
+
 
 ### Install
 
@@ -59,7 +59,8 @@ You may want to change version of PVS-Studio, or gcc.
 You can change `Dockerfile` in `docker-pvs` or `docker-psv-base` directory. Then run `./build.sh`, which located near `Dockerfile`
  
 ### Setup Eclipse
-Now docker-pvs works only as external tool. In Eclipse do:
+#### Work as external tool
+In Eclipse do:
 
 `Run->External Tools->External Tools configuration...`
 
@@ -71,15 +72,53 @@ In `Arguments` field type `-w "${workspace_loc}" -n "projectname" -c Debug`
 `"projectname"` - project name (in double quotes)
 
 `Debug` - Build configuration (Debug or Release)
+<<<<<<< HEAD
 ![](img/Screenshot2.png)
+=======
 
-### TODO
-- [ ] support analyze while compiling project
-- [ ] add PVS-Studeo license file support
+![](img/screenshot2.png)
+>>>>>>> release/0.0.5
 
+At `Common` tab you need to check box `Allocate console`
+
+![](img/screenshot3.png)
+
+`Apply` and `Run`!
+
+####Work as compiler
+Right-click on project in `Project explorer` (or `⌘+I`).
+Choose `C/C++ Build` on left panel and press button `Manage configurations...`
+
+![](img/screenshot4.png)
+
+Press `New` button and type name of new configuration `PVS-Studio`
+
+![](img/screenshot5.png)
+
+Press `OK` and `OK`
+
+Now change `Configuration` to `PVS-Studio`, uncheck `Use default build command` and paste to `Build command` this command: `${workspace_loc}/docker-pvs/eclipse-pvs -w "${workspace_loc}" -n ${ProjName} -c Debug -d`
+
+![](img/screenshot6.png)
+
+Press `OK`
+
+In menu press `Project->Build Configuration->Set Active->PVS-Studio`
+
+
+Press `⌘+B`
+
+
+###Licensing PVS-Studio
+####If you have license file for PVS-Studio
+Copy put in near `pvs-studio.cfg`
+
+Add string `lic-file = /root/workspace/filename`
+####If you don't have license file for PVS-Studio
+Read [article](http://www.viva64.com/en/b/0457/) from viva64.com, how to use PVS-Studio for free.
 ### Contributors
 
- * Author: @timurey
+ Author: [timurey](https://github.com/timurey)
 
 ### License
 

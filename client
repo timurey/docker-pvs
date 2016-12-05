@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 
 while [ "$1" != "" ]; do
@@ -18,7 +18,7 @@ if [ "$projectname" != "" ]; then
 	cd "/root/workspace/$projectname/$config"
 	# удаляем ошмётки `strace`, которые могут появиться в некоторых случаях:
 	pvs-studio-analyzer trace -- make -f makefile all 2>&1 | sed '/strace: umovestr:/d' -
-	pvs-studio-analyzer analyze --compiler arm-none-eabi-gcc -e "/usr/arm-none-eabi/include/" -o "$TEMPLOG"
+	pvs-studio-analyzer analyze --compiler arm-none-eabi-gcc -o "$TEMPLOG" --cfg /root/workspace/docker-pvs/pvs-studio.cfg
 
 	# удаляем непонятную строку, которая у меня появляется в выводе конвертера:
 	RC=$(plog-converter -t errorfile "$TEMPLOG" | sed '/The documentation for all/d' -)
