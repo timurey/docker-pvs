@@ -1,13 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 #
-function debug
+
+debug()
 {
 if [ "$debug" == "1" ]; then
     d=$1
     echo $d
 fi
 }
-function usage
+usage()
 {
     echo "usage: eclipse-pvs [[-w <path> -n <name> [-d]]| -h]"
     echo "where args:"
@@ -18,22 +19,18 @@ function usage
     echo "      -h(--help)                  show this message"
 }
 
-
-function clean {
+clean ()
+{
 debug "Clean"
-# вызов из билдера, проверяем цели:
-if [ "$1" = "clean" ]; then
-    make -f makefile clean
-   # здесь больше ничего делать не надо:
+make -f makefile clean
+   # Nothing to do
     exit
-fi
 }
 
-function analyze
+analyze()
 {
-    # не clean или вызвали как External Tool - анализируем проект:
     debug "running command:"
-    debug "/usr/local/bin/docker run --security-opt seccomp:\"""$workspace""/docker-pvs/strace.json\" -v \"""$workspace""\":/root/workspace-i timurey/docker-pvs /root/workspace/pvs/client -n \"""$projectname""\" -c "$config""
+    debug "/usr/local/bin/docker run --security-opt seccomp:\"""$workspace/docker-pvs/strace.json""\" -v \"""$workspace""\":/root/workspace -i timurey/docker-pvs /root/workspace/docker-pvs/client -n \"""$projectname""\" -c \"""$config""\""
     /usr/local/bin/docker run --security-opt seccomp:"$workspace/docker-pvs/strace.json" -v "$workspace":/root/workspace -i timurey/docker-pvs /root/workspace/docker-pvs/client -n "$projectname" -c "$config"
     exit
 }
@@ -55,21 +52,19 @@ while [ "$1" != "" ]; do
         -h | --help )           usage
                                 exit
                                 ;;
-        clean )             clean
+        clean )                 clean
                                 exit 1
     esac
     shift
 done
 
+debug "$PWD"
 if [ "$workspace" != "" ]; then
     if [ "$projectname" != "" ]; then
         if [ "$config" != "" ]; then
-    debug "workspace path:"
-    debug "$workspace"
-    debug "project name:"
-    debug "$projectname"
-    debug "config description:"
-    debug "$config"
+    debug "workspace path: \"$workspace\""
+    debug "project name: \"$projectname\""
+    debug "config description: \"$config\""
     analyze
         else
             echo "config description is not defined" >&2
