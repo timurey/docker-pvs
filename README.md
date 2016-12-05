@@ -17,7 +17,7 @@ Make sure you have installed:
  
  Make sure, what your Eclipse workspace directory is present in Docker file sharing path *- if directory is located in user home directory, you may go to next step*
  
-![](screenshot1.png)
+![](img/screenshot1.png)
 
 Clone [docker-pvs](https://github.com/timurey/docker-pvs) in your Eclipse workspace directory  
 
