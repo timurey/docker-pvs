@@ -48,15 +48,30 @@ docker-pvs image contains:
 	PSV-Studio 6.11.20138.1 (http://www.viva64.com/en/pvs-studio-download-linux/)
 
 ```
-[download pvs-studio for linux](http://www.viva64.com/en/pvs-studio-download-linux/)
 
 ### Update
-todo
-### If you want
-todo
+```
+$ ./run_once.sh
+```
+### Your own changes
+You may want to change version of PVS-Studio, or gcc.
 
+You can change `Dockerfile` in `docker-pvs` or `docker-psv-base` directory. Then run `./build.sh`, which located near `Dockerfile`
+ 
 ### Setup Eclipse
-todo
+Now docker-pvs works only as external tool. In Eclipse do:
+
+`Run->External Tools->External Tools configuration...`
+
+Then, press button `New launch configuration`,
+In `Location` field paste `${workspace_loc}/docker-pvs/eclipse-pvs`
+
+In `Arguments` field type `-w "${workspace_loc}" -n "projectname" -c Debug`
+
+`"projectname"` - project name (in double quotes)
+
+`Debug` - Build configuration (Debug or Release)
+![](img/screenshot2.png)
 
 ### TODO
 - [ ] support analyze while compiling project
