@@ -72,16 +72,13 @@ In `Arguments` field type `-w "${workspace_loc}" -n "projectname" -c Debug`
 `"projectname"` - project name (in double quotes)
 
 `Debug` - Build configuration (Debug or Release)
-<<<<<<< HEAD
-![](img/Screenshot2.png)
-=======
 
-![](img/screenshot2.png)
->>>>>>> release/0.0.5
+![](img/Screenshot2.png)
+
 
 At `Common` tab you need to check box `Allocate console`
 
-![](img/screenshot3.png)
+![](img/Screenshot3.png)
 
 `Apply` and `Run`!
 
@@ -89,17 +86,17 @@ At `Common` tab you need to check box `Allocate console`
 Right-click on project in `Project explorer` (or `⌘+I`).
 Choose `C/C++ Build` on left panel and press button `Manage configurations...`
 
-![](img/screenshot4.png)
+![](img/Screenshot4.png)
 
 Press `New` button and type name of new configuration `PVS-Studio`
 
-![](img/screenshot5.png)
+![](img/Screenshot5.png)
 
 Press `OK` and `OK`
 
 Now change `Configuration` to `PVS-Studio`, uncheck `Use default build command` and paste to `Build command` this command: `${workspace_loc}/docker-pvs/eclipse-pvs -w "${workspace_loc}" -n ${ProjName} -c Debug -d`
 
-![](img/screenshot6.png)
+![](img/Screenshot6.png)
 
 Press `OK`
 
