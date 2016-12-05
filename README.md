@@ -17,7 +17,7 @@ Make sure you have installed:
  
  Make sure, what your Eclipse workspace directory is present in Docker file sharing path *- if directory is located in user home directory, you may go to next step*
  
-![](img/screenshot1.png)
+![](img/Screenshot1.png)
 
 Clone [docker-pvs](https://github.com/timurey/docker-pvs) in your Eclipse workspace directory  
 
@@ -71,7 +71,7 @@ In `Arguments` field type `-w "${workspace_loc}" -n "projectname" -c Debug`
 `"projectname"` - project name (in double quotes)
 
 `Debug` - Build configuration (Debug or Release)
-![](img/screenshot2.png)
+![](img/Screenshot2.png)
 
 ### TODO
 - [ ] support analyze while compiling project
