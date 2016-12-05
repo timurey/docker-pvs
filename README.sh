@@ -4,13 +4,22 @@ ___
 ![](screenshot.png)
 
 ### Install
-You need to install [Docker](https://docs.docker.com/docker-for-mac/)
 
-```
-todo: Add Share files
-```
+Make sure you have installed:
 
-Clone [Docker-pvs](https://github.com/timurey/docker-pvs) in your Eclipse workspace directory  
+ [Docker](https://docs.docker.com/docker-for-mac/)
+ 
+ [Eclipse CDT](https://eclipse.org/cdt/)
+ 
+ [GNU ARM Eclipse](https://gnuarmeclipse.github.io)
+ 
+ [GNU ARM Embedded Toolchain](https://launchpad.net/gcc-arm-embedded) - [how to install](http://gnuarmeclipse.github.io/toolchain/install/#macos) *- recommended gcc version is 5.4.1 20160919 (release)*
+ 
+ Make sure, what your Eclipse workspace directory is present in Docker file sharing path *- if directory is located in user home directory, you may go to next step*
+ 
+![](screenshot1.png)
+
+Clone [docker-pvs](https://github.com/timurey/docker-pvs) in your Eclipse workspace directory  
 
 ```
 $ git clone https://github.com/timurey/docker-pvs.git
@@ -25,15 +34,15 @@ $ ./eclipse-pvs [[-w <path> -n <name> -c <descriptor> [-d]]| -h]
 ```
 where args:
 
-	-w(--workspace)   <pat      full path to workspace directory
-	-n(--projectname) <name>    project name in ecipse
+	-w(--workspace)   <path>      full path to workspace directory
+	-n(--projectname) <name>    project name in eclipse
 	-c(--config)      <config>  config descriptor (Debug or Release)
 	-d(--debug)                 show some debug info
 	-h(--help)                  show help
 
 
 ```
-Image contains:
+docker-pvs image contains:
 	GNU Make 3.81 (ubuntu repository)
 	gcc-arm-embedded version 5.4.1 20160919 (team-gcc-arm-embedded/ppa repository)
 	PSV-Studio 6.11.20138.1 (http://www.viva64.com/en/pvs-studio-download-linux/)
@@ -49,9 +58,13 @@ todo
 ### Setup Eclipse
 todo
 
+### TODO
+- [ ] support analyze while compiling project
+- [ ] add PVS-Studeo license file support
+
 ### Contributors
 
- * Author: [timurey](https://github.com/tymurey)
+ * Author: @timurey
 
 ### License
 

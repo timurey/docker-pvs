@@ -11,7 +11,7 @@ function usage
 {
     echo "usage: eclipse-pvs [[-w <path> -n <name> [-d]]| -h]"
     echo "where args:"
-    echo "      -w(--workspace)   <pat      set path to workspace directory"
+    echo "      -w(--workspace)   <path>    set path to workspace directory"
     echo "      -n(--projectname) <name>    project name in eclipse"
     echo "      -c(--config)      <config>  config descriptor (Debug or Release)"
     echo "      -d(--debug)                 some debuging info"
