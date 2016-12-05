@@ -31,10 +31,9 @@ fi
 function analyze
 {
     # не clean или вызвали как External Tool - анализируем проект:
-    debug "starting analyze"
     debug "running command:"
-    debug "/usr/local/bin/docker run --security-opt seccomp:\"""$workspace""/docker-pvs/strace.json\" -v \"""$workspace""\":/root/workspace-i timurey/pvs-studio /root/workspace/pvs/client -n \"""$projectname""\" -c "$config""
-    /usr/local/bin/docker run --security-opt seccomp:"$workspace/docker-pvs/strace.json" -v "$workspace":/root/workspace -i timurey/pvs-studio /root/workspace/docker-pvs/client -n "$projectname" -c "$config"
+    debug "/usr/local/bin/docker run --security-opt seccomp:\"""$workspace""/docker-pvs/strace.json\" -v \"""$workspace""\":/root/workspace-i timurey/docker-pvs /root/workspace/pvs/client -n \"""$projectname""\" -c "$config""
+    /usr/local/bin/docker run --security-opt seccomp:"$workspace/docker-pvs/strace.json" -v "$workspace":/root/workspace -i timurey/docker-pvs /root/workspace/docker-pvs/client -n "$projectname" -c "$config"
     exit
 }
 
