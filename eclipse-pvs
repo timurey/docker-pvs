@@ -9,13 +9,13 @@ fi
 }
 function usage
 {
-    echo "usage: ecipse-pvs [[-w <path> -n <name> [-d]]| -h]"
+    echo "usage: eclipse-pvs [[-w <path> -n <name> [-d]]| -h]"
     echo "where args:"
-    echo "\t-w(--workspace)   <pat      set path to workspace directory"
-    echo "\t-n(--projectname) <name>    project name in ecipse"
-    echo "\t-d(--debug)                 some debuging info"
-    echo "\t-c(--config)     <config>   config descriptor"
-    echo "\t-h(--help)                  show this message"
+    echo "      -w(--workspace)   <path>    set path to workspace directory"
+    echo "      -n(--projectname) <name>    project name in eclipse"
+    echo "      -c(--config)      <config>  config descriptor (Debug or Release)"
+    echo "      -d(--debug)                 some debuging info"
+    echo "      -h(--help)                  show this message"
 }
 
 
@@ -61,8 +61,8 @@ while [ "$1" != "" ]; do
     shift
 done
 
-if [ "$projectname" != "" ]; then
-    if [ "$workspace" != "" ]; then
+if [ "$workspace" != "" ]; then
+    if [ "$projectname" != "" ]; then
         if [ "$config" != "" ]; then
     debug "workspace path:"
     debug "$workspace"
@@ -76,10 +76,10 @@ if [ "$projectname" != "" ]; then
             exit
         fi
     else
-        echo "workspace path is not defined" >&2
+        echo "project name path is not defined" >&2
         exit
     fi
 else
-    echo "project name is not defined" >&2
+    echo "workspace is not defined" >&2
     exit
 fi
